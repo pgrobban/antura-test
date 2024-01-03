@@ -1,5 +1,5 @@
 import Typography from "@mui/material/Typography";
-import RandomUserCard from "../components/RandomUserCard";
+import RandomUserGenerator from "../components/RandomUserGenerator";
 
 export default function Home() {
   return (
@@ -7,7 +7,7 @@ export default function Home() {
       <Typography variant="h1" style={{ fontSize: 24 }}>
         Random user generator
       </Typography>
-      <RandomUserCard />
+      <RandomUserGenerator />
     </main>
   );
 }

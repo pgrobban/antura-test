@@ -7,8 +7,13 @@ export interface Name {
   last: string;
 }
 
+export interface Street {
+  name: string;
+  number: number;
+}
+
 export interface Location {
-  street: string;
+  street: Street;
   city: string;
   state: string;
   postcode: string;
@@ -33,7 +38,7 @@ export interface ErrorResponse {
 }
 
 export interface SuccessResponse {
-  results: SuccessResult;
+  results: User[];
 }
 
 export interface DateAndAge {
@@ -62,7 +67,7 @@ export interface Login {
   sha256: string;
 }
 
-export interface SuccessResult {
+export interface User {
   gender: Gender;
   name: Name;
   location: Location;
