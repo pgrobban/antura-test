@@ -16,6 +16,7 @@ import { useState } from "react";
 import { red } from "@mui/material/colors";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { formatDateString } from "@/helpers/utils";
+import "../app/globals.css";
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -67,7 +68,11 @@ const UserCard: React.FC<Props> = ({ user }) => {
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            className="show-more"
+          >
             Show more
           </Typography>
           <ExpandMore

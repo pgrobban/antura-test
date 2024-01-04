@@ -12,8 +12,19 @@ h1 {
   font-size: 24px;
 }
 
-main {
+.user-generator {
   border: 1px solid #333;
+}
+
+.show-more {
+  width: 100%;
+  text-align: right;
+}
+
+.generating-text {
+  display: flex;
+  align-items: center;
+  color: white;
 }
 
 @media (min-width: 1024px) {

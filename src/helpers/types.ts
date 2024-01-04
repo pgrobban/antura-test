@@ -1,4 +1,5 @@
 export type Gender = "male" | "female";
+export type GenderSelection = Gender | "all";
 export type Title = "Miss" | "Mrs" | "Mr";
 
 export interface Name {
@@ -80,6 +81,30 @@ export interface User {
   id: ID;
   picture: Picture;
   nat: string;
+}
+
+export enum Nationality {
+  AU = "AU",
+  BR = "BR",
+  CA = "CA",
+  CH = "CH",
+  DE = "DE",
+  DK = "DK",
+  ES = "ES",
+  FI = "FI",
+  FR = "FR",
+  GB = "GB",
+  IE = "IE",
+  IN = "IN",
+  IR = "IR",
+  MX = "MX",
+  NL = "NL",
+  NO = "NO",
+  NZ = "NZ",
+  RS = "RS",
+  TR = "TR",
+  UA = "UA",
+  US = "US",
 }
 
 export function isSuccessResponse(
