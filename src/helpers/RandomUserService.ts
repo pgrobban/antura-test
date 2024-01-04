@@ -1,6 +1,6 @@
 import { AllSelection, Gender, GenderSelection, Nationality } from "./types";
 
-const DEFAULT_URL = "https://randomuser.me/api/?";
+export const DEFAULT_URL = "https://randomuser.me/api/?";
 
 export default class ExportUserService {
   constructor(
@@ -27,7 +27,7 @@ export default class ExportUserService {
     this.generateFromNationalities = nationalitiesSelection;
   }
 
-  private getFetchUrl() {
+  getFetchUrl() {
     return (
       this.apiUrl +
       new URLSearchParams({

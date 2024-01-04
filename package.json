@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",
@@ -18,12 +19,14 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.11",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
+    "ts-jest": "^29.1.1",
     "typescript": "^5"
   }
 }
