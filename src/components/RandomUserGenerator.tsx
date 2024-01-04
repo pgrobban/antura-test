@@ -7,7 +7,7 @@ import {
   isSuccessResponse,
 } from "@/helpers/types";
 import { Grid } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import RandomUserService from "../helpers/RandomUserService";
 import GeneratorOptions from "./GeneratorOptions";
 import UserCard from "./UserCard";
@@ -30,17 +30,17 @@ const RandomUserGenerator: React.FC<Props> = (props: Props) => {
     nationalitiesSelected: Object.values(Nationality),
   });
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setResponse(null);
     service.setGenerateFromGender(state.genderSelected);
     service.setGenerateFromNationalities(state.nationalitiesSelected);
     setResponse(await service.fetchRandomUser());
     setIsLoading(false);
-  };
+  }, [state.genderSelected, state.nationalitiesSelected]);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   return (
     <Grid className="user-generator" container spacing={2}>
