@@ -42,7 +42,7 @@ const UserCard: React.FC<Props> = ({ user }) => {
 
   return (
     <>
-      <Card>
+      <Card className="user-card" raised>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -53,8 +53,8 @@ const UserCard: React.FC<Props> = ({ user }) => {
           subheader={user.email}
         />
         <CardMedia
+          className={"user-card-photo"}
           component="img"
-          height="194"
           image={user.picture.large}
           alt={`${user.name.first} ${user.name.last}`}
         />

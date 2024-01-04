@@ -1,5 +1,13 @@
-export type Gender = "male" | "female";
-export type GenderSelection = Gender | "all";
+export enum Gender {
+  Male = "male",
+  Female = "female",
+}
+
+export enum AllSelection {
+  All = "all",
+}
+
+export type GenderSelection = Gender | AllSelection;
 export type Title = "Miss" | "Mrs" | "Mr";
 
 export interface Name {

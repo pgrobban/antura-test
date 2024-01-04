@@ -1,19 +1,19 @@
-:root {
-  --foreground-color: white;
-  --background-color: black;
-}
-
 body {
-  color: var(--foreground-color);
-  background: var(--background-color);
+  background-color: seashell;
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 24px !important;
+  margin-bottom: 24px !important;
 }
 
 .user-generator {
   border: 1px solid #333;
+}
+
+.generator-options {
+  padding: 12px;
+  margin-bottom: 8px;
 }
 
 .show-more {
@@ -24,7 +24,15 @@ h1 {
 .generating-text {
   display: flex;
   align-items: center;
-  color: white;
+}
+
+.user-card {
+  padding-right: 16px;
+  margin-bottom: 16px;
+}
+
+.nationality-select {
+  width: calc(100% - 8px);
 }
 
 @media (min-width: 1024px) {
@@ -32,5 +40,16 @@ h1 {
     max-width: 1000px;
     margin: 0 auto;
     margin-top: 100px;
+  }
+}
+
+@media (max-width: 800px) {
+  .user-card-photo {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  .user-generator {
+    border: none;
   }
 }

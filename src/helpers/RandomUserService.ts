@@ -1,12 +1,11 @@
-import { Gender, GenderSelection, Nationality } from "./types";
+import { AllSelection, Gender, GenderSelection, Nationality } from "./types";
 
 const DEFAULT_URL = "https://randomuser.me/api/?";
-const defaultGender = "all";
 
 export default class ExportUserService {
   constructor(
     private apiUrl: string = DEFAULT_URL,
-    private generateFromGender: GenderSelection = "all",
+    private generateFromGender: GenderSelection = AllSelection.All,
     private generateFromNationalities: Nationality[] = Object.values(
       Nationality
     )

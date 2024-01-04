@@ -1,5 +1,11 @@
 "use client";
-import { RandomUserResponse, isSuccessResponse } from "@/helpers/types";
+import {
+  AllSelection,
+  GenderSelection,
+  Nationality,
+  RandomUserResponse,
+  isSuccessResponse,
+} from "@/helpers/types";
 import { Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import RandomUserService from "../helpers/RandomUserService";
@@ -11,12 +17,23 @@ const service = new RandomUserService();
 
 interface Props {}
 
+export interface RandomUserGeneratorState {
+  genderSelected: GenderSelection;
+  nationalitiesSelected: Nationality[];
+}
+
 const RandomUserGenerator: React.FC<Props> = (props: Props) => {
   const [response, setResponse] = useState<RandomUserResponse | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [state, setState] = useState<RandomUserGeneratorState>({
+    genderSelected: AllSelection.All,
+    nationalitiesSelected: Object.values(Nationality),
+  });
 
   const fetchData = async () => {
     setResponse(null);
+    service.setGenerateFromGender(state.genderSelected);
+    service.setGenerateFromNationalities(state.nationalitiesSelected);
     setResponse(await service.fetchRandomUser());
     setIsLoading(false);
   };
@@ -50,7 +67,12 @@ const RandomUserGenerator: React.FC<Props> = (props: Props) => {
         )}
       </Grid>
       <Grid item xs={12} md={4}>
-        <GeneratorOptions isLoading={isLoading} fetchData={fetchData} />
+        <GeneratorOptions
+          state={state}
+          setState={setState}
+          isLoading={isLoading}
+          fetchData={fetchData}
+        />
       </Grid>
     </Grid>
   );

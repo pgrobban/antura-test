@@ -1,26 +1,36 @@
-import { Button } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import LoadingCircle from "./LoadingCircle";
 
 interface Props {
   isLoading: boolean;
   fetchData: () => Promise<void>;
+  isStateInvalid: boolean;
 }
 
-const GenerateUserButton: React.FC<Props> = ({ isLoading, fetchData }) => {
+const GenerateUserButton: React.FC<Props> = ({
+  isLoading,
+  fetchData,
+  isStateInvalid,
+}) => {
   return (
-    <Button
-      color="primary"
-      variant="contained"
-      disabled={isLoading}
-      onClick={fetchData}
-    >
-      {isLoading && (
-        <span className="generating-text">
-          Generating... <LoadingCircle size={"12px"} />
-        </span>
-      )}
-      {!isLoading && <span>Generate</span>}
-    </Button>
+    <Grid container justifyContent="center">
+      <Grid item>
+        <Button
+          color="primary"
+          variant="contained"
+          disabled={isLoading || isStateInvalid}
+          onClick={fetchData}
+          className="generate-button"
+        >
+          {isLoading && (
+            <span className="generating-text">
+              Generating... <LoadingCircle size={"12px"} />
+            </span>
+          )}
+          {!isLoading && <span>Generate</span>}
+        </Button>
+      </Grid>
+    </Grid>
   );
 };
 

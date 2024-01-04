@@ -8,7 +8,15 @@ The aim is to produce a simple web app that displays a button to fetch random us
 
 ## Getting Started
 
-Run the development server:
+[Node.js](https://nodejs.org/en) 18.17.0 or higher is required to run the project.
+
+Clone the repo, then install the dependencies:
+
+```bash
+npm ci
+```
+
+To start the development server:
 
 ```bash
 npm run dev
@@ -33,3 +41,6 @@ Production build:
 ```bash
 npm run build && npm run start
 ```
+
+## Known issues
+When running in dev mode, the generator runs twice upon startup. This is expected behavior from React in strict mode. See https://stackoverflow.com/questions/71957848/in-next-js-useeffect-is-run-twice-i-put-an-empty-array-as-the-second-argumen
