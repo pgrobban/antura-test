@@ -1,4 +1,4 @@
-import { Button, Grid } from "@mui/material";
+import { Button, Grid, Paper } from "@mui/material";
 import GenderSelect from "./GenderSelect";
 import NationalitySelector from "./NationalitySelector";
 import GenerateUserButton from "./GenerateUserButton";
@@ -21,27 +21,29 @@ const GeneratorOptions: React.FC<Props> = (props) => {
     setState({ ...state, nationalitiesSelected: newNationalitiesSelected });
 
   return (
-    <Grid container rowSpacing={1} className="generator-options">
-      <Grid item xs={12}>
-        <GenderSelect
-          value={state.genderSelected}
-          onChange={setGenderSelection}
-        />
+    <Paper className="generator-options">
+      <Grid container rowSpacing={1}>
+        <Grid item xs={12}>
+          <GenderSelect
+            value={state.genderSelected}
+            onChange={setGenderSelection}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <NationalitySelector
+            value={state.nationalitiesSelected}
+            onChange={setNationalitiesSelection}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <GenerateUserButton
+            isLoading={isLoading}
+            fetchData={fetchData}
+            isStateInvalid={state.nationalitiesSelected.length === 0}
+          />
+        </Grid>
       </Grid>
-      <Grid item xs={12}>
-        <NationalitySelector
-          value={state.nationalitiesSelected}
-          onChange={setNationalitiesSelection}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <GenerateUserButton
-          isLoading={isLoading}
-          fetchData={fetchData}
-          isStateInvalid={state.nationalitiesSelected.length === 0}
-        />
-      </Grid>
-    </Grid>
+    </Paper>
   );
 };
 

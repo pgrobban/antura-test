@@ -7,10 +7,6 @@ h1 {
   margin-bottom: 24px !important;
 }
 
-.user-generator {
-  border: 1px solid #333;
-}
-
 .generator-options {
   padding: 12px;
   margin-bottom: 8px;
@@ -42,7 +38,8 @@ h1 {
   align-items: center;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 900px) {
+  /* cutoff for MUI medium screen */
   main {
     max-width: 1000px;
     margin: 0 auto;
@@ -50,13 +47,9 @@ h1 {
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .user-card-photo {
     max-width: 200px;
     margin: 0 auto;
-  }
-
-  .user-generator {
-    border: none;
   }
 }
