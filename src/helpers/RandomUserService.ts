@@ -38,11 +38,18 @@ export default class ExportUserService {
   }
 
   getFetchUrl() {
+    const allNationalitiesSelected =
+      Object.values(Nationality).length ===
+      this.generateFromNationalities.length;
     return (
       this.apiUrl +
       new URLSearchParams({
-        gender: this.generateFromGender,
-        nat: this.generateFromNationalities.join(","),
+        ...(this.generateFromGender !== AllSelection.All && {
+          gender: this.generateFromGender,
+        }),
+        ...(!allNationalitiesSelected && {
+          nat: this.generateFromNationalities.join(","),
+        }),
       })
     );
   }
