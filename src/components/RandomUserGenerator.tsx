@@ -46,7 +46,7 @@ const RandomUserGenerator: React.FC<Props> = ({
     setResponse(await service.fetchRandomUser());
     setIsLoading(false);
     toggleDrawerOpen(false);
-  }, [state.genderSelected, state.nationalitiesSelected]);
+  }, [state.genderSelected, state.nationalitiesSelected, toggleDrawerOpen]);
 
   useEffect(() => {
     fetchData();
@@ -87,7 +87,7 @@ const RandomUserGenerator: React.FC<Props> = ({
           className="drawer"
           anchor="right"
           open={drawerOpen}
-          onClose={() => toggleDrawerOpen()}
+          onClose={() => toggleDrawerOpen}
         >
           <Box sx={{ width: 300 }}>
             <GeneratorOptions {...generatorOptionsProps} />
