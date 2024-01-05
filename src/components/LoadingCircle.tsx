@@ -5,5 +5,5 @@ interface Props {
 }
 
 export default ({ size }: Props) => {
-  return <CircularProgress size={size} />;
+  return <CircularProgress size={size} style={{ margin: "0 auto" }} />;
 };

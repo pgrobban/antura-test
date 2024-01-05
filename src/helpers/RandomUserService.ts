@@ -1,6 +1,16 @@
-import { AllSelection, Gender, GenderSelection, Nationality } from "./types";
+import {
+  AllSelection,
+  ErrorResponse,
+  GenderSelection,
+  Nationality,
+  RandomUserResponse,
+} from "./types";
 
 export const DEFAULT_URL = "https://randomuser.me/api/?";
+
+const defaultErrorResponse: ErrorResponse = {
+  error: "Failed to fetch",
+};
 
 export default class ExportUserService {
   constructor(
@@ -37,12 +47,17 @@ export default class ExportUserService {
     );
   }
 
-  fetchRandomUser = async () => {
+  async fetchRandomUser(): Promise<RandomUserResponse> {
     try {
       const response = await fetch(this.getFetchUrl(), {
         method: "GET",
       });
-      return await response.json();
-    } catch (e: unknown) {}
-  };
+      if (response.ok) {
+        return (await response.json()) as RandomUserResponse;
+      }
+      return defaultErrorResponse;
+    } catch (e: unknown) {
+      return defaultErrorResponse;
+    }
+  }
 }

@@ -14,6 +14,7 @@ import UserCard from "./UserCard";
 import LoadingCircle from "./LoadingCircle";
 
 const service = new RandomUserService();
+const allNationalities = Object.values(Nationality);
 
 interface Props {}
 
@@ -27,7 +28,7 @@ const RandomUserGenerator: React.FC<Props> = (props: Props) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [state, setState] = useState<RandomUserGeneratorState>({
     genderSelected: AllSelection.All,
-    nationalitiesSelected: Object.values(Nationality),
+    nationalitiesSelected: allNationalities,
   });
 
   const fetchData = async () => {
@@ -54,14 +55,7 @@ const RandomUserGenerator: React.FC<Props> = (props: Props) => {
           </div>
         )}
         {isLoading && (
-          <div
-            style={{
-              height: "100%",
-              width: "100%",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
+          <div className="loading-circle">
             <LoadingCircle />
           </div>
         )}

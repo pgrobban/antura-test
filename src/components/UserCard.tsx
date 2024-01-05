@@ -15,7 +15,7 @@ import {
 import { useState } from "react";
 import { red } from "@mui/material/colors";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { formatDateString } from "@/helpers/utils";
+import { formatDateString, upperFirst } from "@/helpers/utils";
 import "../app/globals.css";
 
 interface ExpandMoreProps extends IconButtonProps {
@@ -50,7 +50,7 @@ const UserCard: React.FC<Props> = ({ user }) => {
             </Avatar>
           }
           title={`${user.name.first} ${user.name.last}`}
-          subheader={user.email}
+          subheader={`${upperFirst(user.gender)}, ${user.dob.age}`}
         />
         <CardMedia
           className={"user-card-photo"}
@@ -60,7 +60,7 @@ const UserCard: React.FC<Props> = ({ user }) => {
         />
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            {user.gender}, {user.dob.age}
+            {user.email}
             <br />
             {user.location.street.number} {user.location.street.name}
             <br />
