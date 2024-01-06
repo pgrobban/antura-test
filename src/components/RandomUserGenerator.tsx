@@ -6,12 +6,13 @@ import {
   RandomUserResponse,
   isSuccessResponse,
 } from "@/helpers/types";
-import { Box, Drawer, Grid } from "@mui/material";
+import { Box, Drawer, Grid, IconButton } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 import RandomUserService from "../helpers/RandomUserService";
 import GeneratorOptions from "./GeneratorOptions";
 import UserCard from "./UserCard";
 import LoadingCircle from "./LoadingCircle";
+import CloseIcon from "@mui/icons-material/Close";
 
 const service = new RandomUserService();
 const allNationalities = Object.values(Nationality);
@@ -90,6 +91,12 @@ const RandomUserGenerator: React.FC<Props> = ({
           onClose={() => toggleDrawerOpen}
         >
           <Box sx={{ width: 300 }}>
+            <IconButton
+              style={{ float: "right" }}
+              onClick={() => toggleDrawerOpen()}
+            >
+              <CloseIcon />
+            </IconButton>
             <GeneratorOptions {...generatorOptionsProps} />
           </Box>
         </Drawer>

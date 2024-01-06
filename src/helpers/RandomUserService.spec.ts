@@ -27,26 +27,33 @@ describe("#RandomUserService", () => {
 
     test("Should generate an URL with nationality param", () => {
       const service = new RandomUserService();
-      service.setGenerateFromNationalities([Nationality.AU, Nationality.CH]);
+      service.setGenerateFromNationalities([
+        Nationality.Australia,
+        Nationality.Switzerland,
+      ]);
       const result = service.getFetchUrl();
       expect(result).toContain(DEFAULT_URL);
       expect(result).not.toContain("gender");
       expect(result).toContain("nat");
-      expect(result).toContain(Nationality.AU);
-      expect(result).toContain(Nationality.CH);
+      expect(result).toContain(Nationality.Australia);
+      expect(result).toContain(Nationality.Switzerland);
+      expect(result).not.toContain(Nationality.Denmark);
     });
 
     test("Should generate an URL with gender and nationality param", () => {
       const service = new RandomUserService();
       service.setGenerateFromGender(Gender.Female);
-      service.setGenerateFromNationalities([Nationality.AU, Nationality.CH]);
+      service.setGenerateFromNationalities([
+        Nationality.Australia,
+        Nationality.Switzerland,
+      ]);
       const result = service.getFetchUrl();
       expect(result).toContain(DEFAULT_URL);
       expect(result).toContain("gender");
       expect(result).toContain("nat");
       expect(result).toContain(Gender.Female);
-      expect(result).toContain(Nationality.AU);
-      expect(result).toContain(Nationality.CH);
+      expect(result).toContain(Nationality.Australia);
+      expect(result).toContain(Nationality.Switzerland);
     });
   });
 

@@ -28,6 +28,7 @@ export interface Location {
   postcode: string;
   coordinates: Position;
   timezone: Timezone;
+  country: keyof typeof Nationality;
 }
 
 export interface Position {
@@ -92,27 +93,27 @@ export interface User {
 }
 
 export enum Nationality {
-  AU = "AU",
-  BR = "BR",
-  CA = "CA",
-  CH = "CH",
-  DE = "DE",
-  DK = "DK",
-  ES = "ES",
-  FI = "FI",
-  FR = "FR",
-  GB = "GB",
-  IE = "IE",
-  IN = "IN",
-  IR = "IR",
-  MX = "MX",
-  NL = "NL",
-  NO = "NO",
-  NZ = "NZ",
-  RS = "RS",
-  TR = "TR",
-  UA = "UA",
-  US = "US",
+  Australia = "au",
+  Brazil = "br",
+  Canada = "ca",
+  Switzerland = "ch",
+  Germany = "de",
+  Denmark = "dk",
+  Spain = "es",
+  Finland = "fi",
+  France = "fr",
+  "Great Britain" = "gb",
+  Ireland = "ie",
+  India = "in",
+  Iran = "ir",
+  Mexico = "mx",
+  Netherlands = "nl",
+  Norway = "no",
+  "New Zeeland" = "nz",
+  Serbia = "rs",
+  Turkey = "tr",
+  Ukraine = "ua",
+  "United States" = "us",
 }
 
 export function isSuccessResponse(

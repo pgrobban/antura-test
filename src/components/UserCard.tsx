@@ -1,30 +1,22 @@
 import { User } from "@/helpers/types";
+import { formatDateString, upperFirst } from "@/helpers/utils";
 import {
   Avatar,
   Card,
-  CardActions,
   CardContent,
   CardHeader,
   CardMedia,
-  Collapse,
   Grid,
-  IconButton,
-  IconButtonProps,
   Typography,
-  styled,
 } from "@mui/material";
-import { useState } from "react";
 import { red } from "@mui/material/colors";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { formatDateString, upperFirst } from "@/helpers/utils";
+import { useState } from "react";
 
 interface Props {
   user: User;
 }
 
 const UserCard: React.FC<Props> = ({ user }) => {
-  const [expanded, setExpanded] = useState(false);
-
   return (
     <>
       <Card className="user-card" raised>
@@ -53,6 +45,8 @@ const UserCard: React.FC<Props> = ({ user }) => {
                 <br />
                 {user.location.postcode} {user.location.city},{" "}
                 {user.location.state}
+                <br />
+                {user.location.country}
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6}>

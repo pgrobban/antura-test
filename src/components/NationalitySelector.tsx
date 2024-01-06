@@ -9,7 +9,8 @@ import {
   Select,
 } from "@mui/material";
 
-const allNationalities = Object.values(Nationality);
+const allNationalityKeys = Object.keys(Nationality);
+const sortedNationalityKeys = allNationalityKeys.sort();
 
 interface Props {
   value: Nationality[];
@@ -17,7 +18,7 @@ interface Props {
 }
 
 const NationalitySelector: React.FC<Props> = ({ value, onChange }) => {
-  const allChecked = allNationalities.length === value.length;
+  const allChecked = allNationalityKeys.length === value.length;
 
   const handleChange = (newValue: string | Nationality[]) => {
     // don't handle click on select/deselect all as a separate check
@@ -54,18 +55,24 @@ const NationalitySelector: React.FC<Props> = ({ value, onChange }) => {
           value={value}
           onChange={(event) => handleChange(event.target.value)}
           input={<OutlinedInput label="Select nationalities" />}
-          renderValue={(selected) => selected.join(", ")}
+          renderValue={(selectedNationalities) =>
+            `${selectedNationalities.length} selected`
+          }
         >
           <MenuItem onClick={handleSelectDeselectAll} value="all">
             <Checkbox checked={allChecked} />
             <ListItemText>Select/deselect all</ListItemText>
           </MenuItem>
-          {allNationalities.map((nationality) => (
-            <MenuItem key={nationality} value={nationality}>
-              <Checkbox checked={value.indexOf(nationality) > -1} />
-              <ListItemText primary={nationality} />
-            </MenuItem>
-          ))}
+          {sortedNationalityKeys.map((nationalityKey) => {
+            const nationality =
+              Nationality[nationalityKey as keyof typeof Nationality];
+            return (
+              <MenuItem key={nationalityKey} value={nationality}>
+                <Checkbox checked={value.indexOf(nationality) > -1} />
+                <ListItemText primary={nationalityKey} />
+              </MenuItem>
+            );
+          })}
         </Select>
       </FormControl>
     </div>
